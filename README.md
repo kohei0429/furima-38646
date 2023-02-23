@@ -12,7 +12,7 @@
 | first_name         | string     | null: false |
 | last_name_kana     | string     | null: false |     
 | first_name_kana    | string     | null: false |
-| birth              | datetime   | null: false |
+| birth              | date       | null: false |
 
 ## Association
 
@@ -23,9 +23,15 @@
 
 | Column             | Type       | Options     | 
 | ---------------    | ---------- | ----------- |
+| image              | string     | null: false |
 | title              | string     | null: false |
-| price              | integer    | null: false |
 | text               | text       | null: false |
+| category_id        | integer    | null: false |
+| condition_id       | integer    | null: false |
+| delivery_charge_id | integer    | null: false |
+| shipping_area_id   | integer    | null: false |
+| shipping_days_id   | integer    | null: false |              
+| price              | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
 ## Association
@@ -44,14 +50,14 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :ship
+- has_one :ship
 
 # shipsテーブル
 
 | Column             | Type       | Options     | 
 | ---------------    | ---------- | ----------- |
 | postcode           | string     | null: false |
-| prefecture         | string     | null: false |
+| prefecture_id      | integer    | null: false |
 | city               | string     | null: false |
 | city_number        | string     | null: false |
 | building_name      | string     |             |
@@ -59,4 +65,4 @@
 | purchase           | references | null: false, foreign_key: true |
 
 ## Association
-- has_one :purchase
+- belongs_to :purchase
