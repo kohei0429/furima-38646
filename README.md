@@ -23,14 +23,13 @@
 
 | Column             | Type       | Options     | 
 | ---------------    | ---------- | ----------- |
-| image              | string     | null: false |
 | title              | string     | null: false |
 | text               | text       | null: false |
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
 | delivery_charge_id | integer    | null: false |
 | shipping_area_id   | integer    | null: false |
-| shipping_days_id   | integer    | null: false |              
+| shipping_day_id    | integer    | null: false |              
 | price              | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
