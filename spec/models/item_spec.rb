@@ -104,7 +104,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
-      it 'priceは半角数字でないと登録できない' do
+      it 'priceは半角数字以外が含まれてる場合は登録できない' do
         @item.price = "1000a"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
