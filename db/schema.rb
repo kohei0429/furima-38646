@@ -49,13 +49,25 @@ ActiveRecord::Schema.define(version: 2023_03_14_103145) do
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "ships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "postcode", null: false
+    t.integer "shipping_area_id", null: false
+    t.string "city", null: false
+    t.string "city_number", null: false
+    t.string "building_name"
+    t.string "phone_number", null: false
+    t.bigint "purchase_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["purchase_id"], name: "index_ships_on_purchase_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,4 +90,7 @@ ActiveRecord::Schema.define(version: 2023_03_14_103145) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
+  add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "users"
+  add_foreign_key "ships", "purchases"
 end
