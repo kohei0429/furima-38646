@@ -25,9 +25,6 @@
       </span>
     </div>
 
-    <%# true式がユーザーがログイン時な上で、かつログインユーザーとitemユーザーがマッチで、
-    編集解除ボタンを表示！else式がユーザーがログインしてるがitemユーザーとマッチしない場合に購入ボタンを表示
-    user_signed_in？で未ログインユーザーははじかれる%>
     <% if user_signed_in? %>
       <% if current_user.id == @item.user_id && @item.purchase == nil %>
         <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
