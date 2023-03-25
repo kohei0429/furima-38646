@@ -106,13 +106,19 @@ RSpec.describe FurimaForm, type: :model do
       it '電話番号が空だと登録できない' do
         @furima_form.phone_number = nil
         @furima_form.valid?
-        expect(@furima_form.errors.full_messages).to include("Phone number is invalid")
+        expect(@furima_form.errors.full_messages).to include("Phone number can't be blank")
       end
 
       it '電話番号が12桁以上は登録できない' do
         @furima_form.phone_number = 190123412345
         @furima_form.valid?
         expect(@furima_form.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it "tokenが空では登録できないこと" do
+        @furima_form.token = nil
+        @furima_form.valid?
+        expect(@furima_form.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
