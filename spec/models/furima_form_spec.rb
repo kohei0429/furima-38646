@@ -123,6 +123,12 @@ RSpec.describe FurimaForm, type: :model do
         expect(@furima_form.errors.full_messages).to include("Phone number is invalid")
       end
 
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @furima_form.phone_number = '1901234123a'
+        @furima_form.valid?
+        expect(@furima_form.errors.full_messages).to include("Phone number is invalid")
+      end
+
       it "tokenが空では登録できないこと" do
         @furima_form.token = nil
         @furima_form.valid?
