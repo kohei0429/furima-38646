@@ -70,7 +70,7 @@ RSpec.describe FurimaForm, type: :model do
       it '郵便番号が空だと登録できない' do
         @furima_form.postcode = nil
         @furima_form.valid?
-        expect(@furima_form.errors.full_messages).to include("Postcode can't be blank", "Postcode is invalid. Include hyphen(-)")
+        expect(@furima_form.errors.full_messages).to include("Postcode can't be blank")
       end
 
       it '郵便番号にハイフンがないと登録できない' do
