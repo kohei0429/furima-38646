@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     if user_signed_in? && current_user.id != @item.user_id && @item.purchase == nil
       @furima_form = FurimaForm.new
     else
-      redirect_to root_path
+      redirect_to user_session_path
     end
   end
 
