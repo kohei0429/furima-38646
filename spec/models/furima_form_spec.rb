@@ -2,7 +2,9 @@ require 'rails_helper'
 RSpec.describe FurimaForm, type: :model do
 
   before do
-    @furima_form = FactoryBot.build(:furima_form)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @furima_form = FactoryBot.build(:furima_form, user_id: user.id, item_id: item.id)
   end
 
   describe '商品購入' do
