@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :furima_form do
+    user_id            {1}
+    item_id            {1}
     postcode           {'123-4567'}
     shipping_area_id   {2}
     city               {'大阪府'}
